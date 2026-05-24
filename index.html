@@ -64,9 +64,17 @@ All photos should be web-optimized JPGs. Recommended sizes:
    RESET
    ================================================ */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
 body {
   margin: 0;
+  padding: 0;
+  width: 100%;
   font-family: 'DM Sans', system-ui, sans-serif;
   font-weight: 400;
   color: var(--dark);
@@ -327,12 +335,11 @@ h1, h2, h3, h4 {
 /* ================================================
    HERO
    ================================================ */
-/* HERO BACKGROUND IMAGE — Unsplash, free license */
+/* HERO BACKGROUND IMAGE */
 .hero {
   position: relative;
-  height: 100vh;
-  min-height: 640px;
-  max-height: 980px;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -342,7 +349,7 @@ h1, h2, h3, h4 {
   background-color: var(--green-deep);
   background-image: url('hero.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
 }
 .hero::before {
