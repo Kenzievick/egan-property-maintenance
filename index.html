@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Egan Property Maintenance — East Granby, CT</title>
+<meta name="description" content="Residential & commercial lawn care, seasonal clean-ups, and property maintenance in East Granby, Simsbury, and surrounding Connecticut areas." />
+
+<!--
+============================================
+HOW TO ADD REAL PHOTOS
+============================================
+1. HERO BACKGROUND: Find the CSS rule for `.hero` and replace the
+   background-color/background-image properties with:
+       background-image: url('your-hero-photo.jpg');
+       background-size: cover;
+       background-position: center;
+
+2. PORTFOLIO PHOTOS: Find each PHOTO SLOT N marker and
+   replace the placeholder div with an img tag (class portfolio-img).
+
+3. ASHTON PHOTO: Find the ASHTON PHOTO marker and replace the
+   about-placeholder div with an img tag (class about-photo).
+
+All photos should be web-optimized JPGs. Recommended sizes:
+   • Hero:      1920×1080px minimum (landscape)
+   • Portfolio: 800×600px minimum (landscape)
+   • About:     600×800px minimum (portrait)
+============================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+<style>
+/* ================================================
+   ROOT / TOKENS
+   ================================================ */
+:root {
+  --green:        #1B3A2D;
+  --green-deep:   #14291F;
+  --green-light:  #2A5443;
+  --gold:         #C9A84C;
+  --gold-soft:    #B8943A;
+  --cream:        #F5F2EC;
+  --cream-warm:   #EEEADF;
+  --dark:         #0E1C14;
+  --gray:         #8A8A7A;
+  --gray-soft:    #BFBDB1;
+
+  --maxw: 1240px;
+  --pad-x: clamp(20px, 4vw, 56px);
+  --section-y: clamp(80px, 10vw, 140px);
+
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+/* ================================================
+   RESET
+   ================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 400;
+  color: var(--dark);
+  background: var(--cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, select, textarea { font-family: inherit; }
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+::selection { background: var(--gold); color: var(--dark); }
+
+/* ================================================
+   UTILITIES
+   ================================================ */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  padding-bottom: 4px;
+  position: relative;
+}
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  vertical-align: middle;
+  margin-right: 14px;
+  transform: translateY(-2px);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 32px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: all .35s var(--ease);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--dark);
+}
+.btn-primary:hover {
+  background: var(--gold-soft);
+  transform: translateY(-2px);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--cream);
+  border-color: rgba(245,242,236,.45);
+}
+.btn-outline:hover {
+  background: var(--cream);
+  color: var(--dark);
+  border-color: var(--cream);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--green);
+  border-color: var(--green);
+}
+.btn-ghost:hover {
+  background: var(--green);
+  color: var(--cream);
+}
+.btn .fa-arrow-right {
+  transition: transform .35s var(--ease);
+}
+.btn:hover .fa-arrow-right { transform: translateX(4px); }
+
+/* Section headings */
+.section-head { text-align: left; max-width: 720px; margin-bottom: 64px; }
+.section-head.center { text-align: center; margin-left: auto; margin-right: auto; }
+.section-head h2 {
+  font-size: clamp(36px, 5vw, 60px);
+  margin-top: 18px;
+  color: var(--green-deep);
+}
+.section-head .accent-line {
+  display: block;
+  width: 64px;
+  height: 2px;
+  background: var(--gold);
+  margin: 24px 0 24px;
+}
+.section-head.center .accent-line { margin-left: auto; margin-right: auto; }
+.section-head p {
+  font-size: 18px;
+  color: var(--gray);
+  max-width: 600px;
+  margin: 0;
+}
+.section-head.center p { margin-left: auto; margin-right: auto; }
+
+/* Fade-up scroll animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity .9s var(--ease), transform .9s var(--ease);
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================================================
+   NAVIGATION
+   ================================================ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 18px 0;
+  transition: background-color .4s var(--ease),
+              border-color .4s var(--ease),
+              padding .4s var(--ease);
+  border-bottom: 1px solid transparent;
+}
+.nav.scrolled {
+  background: var(--green);
+  border-bottom: 1px solid rgba(201,168,76,.4);
+  padding: 12px 0;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  color: var(--cream);
+}
+.logo-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.logo-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 4px;
+  font-weight: 500;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  font-weight: 500;
+  position: relative;
+  padding: 6px 0;
+  transition: color .3s var(--ease);
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width .3s var(--ease);
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: var(--gold);
+  color: var(--dark) !important;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all .3s var(--ease);
+}
+.nav-cta:hover {
+  background: var(--cream);
+  transform: translateY(-1px);
+}
+.nav-cta::after { display: none !important; }
+
+.hamburger {
+  display: none;
+  width: 36px;
+  height: 36px;
+  position: relative;
+  z-index: 110;
+}
+.hamburger span {
+  display: block;
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  height: 1.5px;
+  background: var(--cream);
+  transition: transform .35s var(--ease), opacity .25s var(--ease), top .35s var(--ease);
+}
+.hamburger span:nth-child(1) { top: 12px; }
+.hamburger span:nth-child(2) { top: 18px; }
+.hamburger span:nth-child(3) { top: 24px; }
+.hamburger.active span:nth-child(1) { top: 18px; transform: rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { top: 18px; transform: rotate(-45deg); }
+
+/* ================================================
+   HERO
+   ================================================ */
+/* HERO BACKGROUND IMAGE — Unsplash, free license */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  max-height: 980px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--cream);
+  overflow: hidden;
+  background-color: var(--green-deep);
+  background-image: url('hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hero::before {
+  /* dark overlay */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 28, 20, 0.72);
+  z-index: 1;
+}
+.hero::after {
+  /* noise/grain */
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: .35;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.7'/></svg>");
+}
+.hero-decor {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.hero-decor .ornament {
+  position: absolute;
+  border: 1px solid rgba(201,168,76,.18);
+}
+.hero-decor .ornament.o-1 {
+  top: 14%; left: 8%;
+  width: 120px; height: 120px;
+  transform: rotate(45deg);
+}
+.hero-decor .ornament.o-2 {
+  bottom: 18%; right: 10%;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  border-color: rgba(201,168,76,.22);
+}
+.hero-decor .vline {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, rgba(201,168,76,.5));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 880px;
+  padding: 0 var(--pad-x);
+}
+.hero .eyebrow {
+  color: var(--gold);
+  font-size: 13px;
+}
+.hero h1 {
+  font-size: clamp(48px, 9vw, 108px);
+  font-weight: 500;
+  margin: 24px 0 28px;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+}
+.hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold);
+}
+.hero .sub {
+  font-size: clamp(16px, 1.6vw, 19px);
+  color: rgba(245,242,236,.78);
+  font-weight: 400;
+  max-width: 620px;
+  margin: 0 auto 40px;
+  line-height: 1.65;
+}
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 64px;
+}
+.trust-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245,242,236,.6);
+  font-weight: 500;
+}
+.trust-stats span { display: inline-flex; align-items: center; gap: 10px; }
+.trust-stats strong {
+  color: var(--gold);
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  letter-spacing: 0;
+  margin-right: 6px;
+}
+.trust-stats .divider {
+  width: 1px;
+  height: 14px;
+  background: rgba(245,242,236,.25);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: rgba(245,242,236,.5);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+}
+.hero-scroll .line {
+  width: 1px; height: 36px;
+  background: linear-gradient(to bottom, transparent, var(--gold));
+  animation: scrollPulse 2.5s var(--ease) infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: .3; transform: scaleY(.7); }
+  50%      { opacity: 1;  transform: scaleY(1); }
+}
+
+/* ================================================
+   SERVICES
+   ================================================ */
+.services {
+  padding: var(--section-y) 0;
+  background: var(--cream);
+  position: relative;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.service-card {
+  position: relative;
+  background: var(--cream-warm);
+  padding: 48px 36px 40px;
+  border-radius: 4px;
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+  box-shadow: 0 1px 0 rgba(14,28,20,.05);
+  overflow: hidden;
+}
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .5s var(--ease);
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px -20px rgba(14,28,20,.18);
+}
+.service-card:hover::before { transform: scaleX(1); }
+.service-icon {
+  font-size: 32px;
+  color: var(--gold);
+  margin-bottom: 28px;
+  display: inline-block;
+}
+.service-card h3 {
+  font-size: 24px;
+  color: var(--green-deep);
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+.service-card p {
+  color: var(--gray);
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.7;
+}
+.service-num {
+  position: absolute;
+  top: 28px;
+  right: 32px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--gold);
+  opacity: .55;
+  letter-spacing: 0.05em;
+}
+
+/* ================================================
+   PORTFOLIO
+   ================================================ */
+.portfolio {
+  padding: var(--section-y) 0;
+  background: var(--cream-warm);
+  position: relative;
+}
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 64px;
+}
+.portfolio-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.portfolio-placeholder,
+.portfolio-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--green);
+  background-image:
+    repeating-linear-gradient(135deg, rgba(255,255,255,.02) 0 2px, transparent 2px 22px),
+    radial-gradient(ellipse at 30% 30%, var(--green-light), var(--green-deep));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--cream);
+  transition: transform .8s var(--ease);
+}
+.portfolio-placeholder .ph-icon {
+  font-size: 42px;
+  color: var(--gold);
+  opacity: .85;
+  margin-bottom: 18px;
+}
+.portfolio-placeholder .ph-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 500;
+  text-align: center;
+  padding: 0 32px;
+}
+.portfolio-placeholder .ph-tag {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 14px;
+}
+.portfolio-item .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(27,58,45,.0);
+  transition: background .55s var(--ease);
+  z-index: 2;
+  pointer-events: none;
+}
+.portfolio-item:hover .overlay { background: rgba(27,58,45,.45); }
+.portfolio-item:hover .portfolio-placeholder,
+.portfolio-item:hover .portfolio-img { transform: scale(1.06); }
+
+.portfolio-corner {
+  position: absolute;
+  bottom: 20px;
+  left: 24px;
+  z-index: 3;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+.portfolio-item:hover .portfolio-corner {
+  opacity: 1;
+  transform: translateY(0);
+}
+.portfolio-corner i { color: var(--gold); margin-right: 8px; }
+
+.portfolio-cta { text-align: center; }
+
+/* ================================================
+   ABOUT
+   ================================================ */
+.about {
+  padding: var(--section-y) 0;
+  background: var(--cream);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.about-text .eyebrow { margin-bottom: 0; }
+.about-text h2 {
+  font-size: clamp(36px, 4.6vw, 56px);
+  color: var(--green-deep);
+  margin: 22px 0 32px;
+  line-height: 1.1;
+}
+.about-text h2 em { font-style: italic; color: var(--gold); }
+.about-text .accent-line {
+  display: block;
+  width: 64px;
+  height: 2px;
+  background: var(--gold);
+  margin-bottom: 28px;
+}
+.about-text p {
+  font-size: 17px;
+  color: var(--dark);
+  line-height: 1.75;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+.about-trust {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 40px;
+  padding-top: 36px;
+  border-top: 1px solid rgba(14,28,20,.1);
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 15px;
+  color: var(--green-deep);
+  font-weight: 500;
+}
+.trust-item .icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--cream-warm);
+  border: 1px solid rgba(201,168,76,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.about-photo-wrap {
+  position: relative;
+}
+.about-photo-wrap::before {
+  /* decorative gold frame offset */
+  content: "";
+  position: absolute;
+  top: 22px;
+  right: -22px;
+  bottom: -22px;
+  left: 22px;
+  border: 1px solid var(--gold);
+  z-index: 0;
+}
+/* ASHTON PHOTO: replace with <img src="ashton.jpg" alt="Ashton Egan" class="about-photo"> */
+.about-placeholder,
+.about-photo {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 3 / 4;
+  margin: 0 auto;
+  background: var(--green);
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.025) 0 1px, transparent 1px 18px),
+    radial-gradient(ellipse at 50% 30%, var(--green-light), var(--green-deep));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--cream);
+  z-index: 1;
+  border-radius: 2px;
+  object-fit: cover;
+  object-position: 50% 12%;
+  filter: saturate(1.05) contrast(1.03);
+}
+.about-photo {
+  display: block;
+}
+.portfolio-img {
+  object-position: center;
+  display: block;
+}
+
+/* Blank states — empty containers, no photo */
+.portfolio-item--blank {
+  background: var(--cream-warm);
+  border: 1px solid rgba(14,28,20,.08);
+}
+.portfolio-item--blank:hover { transform: none; }
+.portfolio-item--blank .overlay,
+.portfolio-item--blank .portfolio-corner { display: none; }
+
+.about-photo--blank {
+  background: var(--cream-warm);
+  background-image: none;
+  border: 1px solid rgba(14,28,20,.08);
+}
+.about-placeholder .ph-icon {
+  font-size: 56px;
+  color: var(--gold);
+  opacity: .85;
+  margin-bottom: 18px;
+}
+.about-placeholder .ph-label {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 18px;
+  text-align: center;
+  padding: 0 32px;
+  color: rgba(245,242,236,.75);
+}
+.about-tag {
+  position: absolute;
+  bottom: -28px;
+  left: -28px;
+  z-index: 2;
+  background: var(--gold);
+  color: var(--dark);
+  padding: 18px 26px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  border-radius: 2px;
+}
+.about-tag small {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 2px;
+  opacity: .75;
+}
+
+/* ================================================
+   TESTIMONIALS
+   ================================================ */
+.testimonials {
+  padding: var(--section-y) 0;
+  background: var(--green);
+  color: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.testimonials::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.015) 0 1px, transparent 1px 20px);
+  pointer-events: none;
+}
+.testimonials .section-head h2 { color: var(--cream); }
+.testimonials .section-head p { color: rgba(245,242,236,.7); }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  position: relative;
+}
+.testimonial-card {
+  background: var(--green-light);
+  padding: 44px 36px 40px;
+  border-radius: 4px;
+  border: 1px solid rgba(201,168,76,.18);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+}
+.testimonial-card .quote-mark {
+  position: absolute;
+  top: 26px;
+  right: 32px;
+  font-family: 'Playfair Display', serif;
+  font-size: 70px;
+  line-height: 1;
+  color: var(--gold);
+  opacity: .35;
+}
+.testimonial-stars {
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: 4px;
+  margin-bottom: 22px;
+}
+.testimonial-card blockquote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--cream);
+  margin: 0 0 28px;
+  flex-grow: 1;
+}
+.testimonial-meta {
+  border-top: 1px solid rgba(201,168,76,.25);
+  padding-top: 18px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.testimonial-meta small {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  text-transform: none;
+  letter-spacing: 0;
+  color: rgba(245,242,236,.55);
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+/* ================================================
+   CONTACT
+   ================================================ */
+.contact {
+  padding: var(--section-y) 0;
+  background: var(--cream);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+.contact-form {
+  background: var(--cream-warm);
+  padding: 48px;
+  border-radius: 4px;
+  border-top: 2px solid var(--gold);
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.form-field { margin-bottom: 18px; }
+.form-field label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green-deep);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(14,28,20,.12);
+  background: var(--cream);
+  color: var(--dark);
+  font-size: 15px;
+  border-radius: 2px;
+  transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
+  font-family: 'DM Sans', sans-serif;
+}
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: var(--gray);
+  font-weight: 400;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,.18);
+}
+.form-field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'><path fill='%231B3A2D' d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 14px;
+  padding-right: 42px;
+}
+.form-field textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+.form-submit {
+  width: 100%;
+  margin-top: 8px;
+  padding: 18px;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+}
+
+.contact-info {
+  padding-top: 8px;
+}
+.contact-info .eyebrow { margin-bottom: 0; }
+.contact-info h3 {
+  font-size: 32px;
+  color: var(--green-deep);
+  margin: 18px 0 28px;
+}
+.contact-info > p {
+  color: var(--gray);
+  margin-bottom: 36px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.info-list { list-style: none; padding: 0; margin: 0; }
+.info-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(14,28,20,.08);
+}
+.info-list li:last-child { border-bottom: none; }
+.info-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.info-text .label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.info-text .value {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--green-deep);
+  font-weight: 500;
+}
+.info-text .value a:hover { color: var(--gold-soft); }
+.info-text small {
+  display: block;
+  color: var(--gray);
+  font-size: 13px;
+  margin-top: 4px;
+}
+.response-note {
+  margin-top: 32px;
+  padding: 18px 22px;
+  background: var(--cream-warm);
+  border-left: 2px solid var(--gold);
+  font-size: 13px;
+  color: var(--green-deep);
+  font-style: italic;
+}
+.response-note strong {
+  display: block;
+  font-style: normal;
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+}
+
+/* ================================================
+   FOOTER
+   ================================================ */
+.footer {
+  background: var(--dark);
+  color: var(--cream);
+  padding: 80px 0 30px;
+  border-top: 1px solid rgba(201,168,76,.35);
+  position: relative;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+.footer .logo-mark { color: var(--cream); font-size: 30px; }
+.footer .logo-sub  { color: var(--gold); margin-bottom: 18px; }
+.footer-tag {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: rgba(245,242,236,.65);
+  max-width: 320px;
+  line-height: 1.5;
+  margin: 0;
+}
+.footer h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 22px;
+  font-weight: 600;
+}
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-links a {
+  font-size: 14px;
+  color: rgba(245,242,236,.75);
+  transition: color .25s var(--ease);
+}
+.footer-links a:hover { color: var(--gold); }
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cream);
+  transition: all .3s var(--ease);
+}
+.footer-social a:hover {
+  background: var(--gold);
+  color: var(--dark);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  padding-top: 28px;
+  border-top: 1px solid rgba(245,242,236,.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12px;
+  color: rgba(245,242,236,.45);
+}
+.footer-bottom a { color: rgba(245,242,236,.65); }
+.footer-bottom a:hover { color: var(--gold); }
+
+/* ================================================
+   RESPONSIVE
+   ================================================ */
+@media (max-width: 980px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 60px; }
+  .about-photo-wrap::before { display: none; }
+  .testimonials-grid { grid-template-columns: 1fr; gap: 20px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 56px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+
+@media (max-width: 760px) {
+  .nav-links {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--green-deep);
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    padding: 80px 32px 32px;
+    transform: translateY(-100%);
+    transition: transform .5s var(--ease);
+    z-index: 105;
+  }
+  .nav-links.open { transform: translateY(0); }
+  .nav-links a { font-size: 18px; }
+  .nav-links .nav-cta { font-size: 13px; padding: 14px 28px; }
+  .hamburger { display: block; }
+
+  .services-grid { grid-template-columns: 1fr; gap: 18px; }
+  .service-card { padding: 38px 28px 32px; }
+  .portfolio-grid { grid-template-columns: 1fr; gap: 16px; }
+
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .contact-form { padding: 32px 26px; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+
+  .hero h1 { font-size: clamp(40px, 12vw, 64px); }
+  .trust-stats { gap: 20px; }
+  .trust-stats .divider { display: none; }
+
+  .about-tag { left: -10px; bottom: -22px; padding: 14px 20px; font-size: 15px; }
+}
+
+@media (max-width: 480px) {
+  .hero-cta .btn { width: 100%; }
+  .hero-cta { flex-direction: column; align-items: stretch; }
+  .trust-stats { gap: 18px; font-size: 11px; }
+  .trust-stats strong { font-size: 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================================================
+     NAVIGATION
+     ================================================ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo" aria-label="Egan Property Maintenance">
+      <span class="logo-mark">EGAN</span>
+      <span class="logo-sub">Property Maintenance</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Free Quote</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ================================================
+     HERO
+     ================================================ -->
+<header class="hero" id="top">
+  <div class="hero-decor" aria-hidden="true">
+    <div class="ornament o-1"></div>
+    <div class="ornament o-2"></div>
+    <div class="vline"></div>
+  </div>
+
+  <div class="hero-content">
+    <span class="eyebrow">East Granby, Connecticut</span>
+    <h1>Your Property,<br /><em>Perfected.</em></h1>
+    <p class="sub">Residential &amp; commercial lawn care, seasonal clean-ups, and curb appeal that speaks for itself — handled by someone who actually cares about the work.</p>
+
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Get a Free Quote <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="#work" class="btn btn-outline">See Our Work</a>
+    </div>
+
+    <div class="trust-stats">
+      <span><strong>7+</strong> Years Experience</span>
+      <span class="divider"></span>
+      <span><strong>50+</strong> Properties Served</span>
+      <span class="divider"></span>
+      <span><strong>5★</strong> Service</span>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <span class="line"></span>
+  </div>
+</header>
+
+<!-- ================================================
+     SERVICES
+     ================================================ -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Our Services</span>
+      <h2>What We Do</h2>
+      <span class="accent-line"></span>
+      <p>Year-round exterior property maintenance for homeowners and businesses across Hartford County.</p>
+    </div>
+
+    <div class="services-grid">
+      <article class="service-card fade-up" style="transition-delay: .05s;">
+        <span class="service-num">01</span>
+        <i class="fa-solid fa-scissors service-icon"></i>
+        <h3>Lawn Mowing &amp; Trimming</h3>
+        <p>Weekly mowing, edging, and trimming to keep your lawn looking sharp all season long.</p>
+      </article>
+
+      <article class="service-card fade-up" style="transition-delay: .15s;">
+        <span class="service-num">02</span>
+        <i class="fa-solid fa-broom service-icon"></i>
+        <h3>Spring &amp; Fall Clean-Ups</h3>
+        <p>Full seasonal clear-outs: leaf removal, debris cleanup, bed prep, and property refresh.</p>
+      </article>
+
+      <article class="service-card fade-up" style="transition-delay: .25s;">
+        <span class="service-num">03</span>
+        <i class="fa-solid fa-seedling service-icon"></i>
+        <h3>Mulching &amp; Bed Work</h3>
+        <p>Fresh mulch installation and flower bed overhauls that instantly boost curb appeal.</p>
+      </article>
+
+      <article class="service-card fade-up" style="transition-delay: .35s;">
+        <span class="service-num">04</span>
+        <i class="fa-solid fa-building service-icon"></i>
+        <h3>Commercial Maintenance</h3>
+        <p>Reliable recurring service for businesses that need their property looking professional, every week.</p>
+      </article>
+
+      <article class="service-card fade-up" style="transition-delay: .45s;">
+        <span class="service-num">05</span>
+        <i class="fa-solid fa-ruler-combined service-icon"></i>
+        <h3>Lawn Edging &amp; Detailing</h3>
+        <p>Crisp borders and defined edges — the finishing touch that separates good from great.</p>
+      </article>
+
+      <article class="service-card fade-up" style="transition-delay: .55s;">
+        <span class="service-num">06</span>
+        <i class="fa-solid fa-clipboard-list service-icon"></i>
+        <h3>Property Consultations</h3>
+        <p>Not sure what your property needs? Ashton will walk the grounds with you and build a plan.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     PORTFOLIO / WORK
+     ================================================ -->
+<section class="portfolio" id="work">
+  <div class="container">
+    <div class="section-head center fade-up">
+      <span class="eyebrow">Recent Work</span>
+      <h2>The Properties We Maintain</h2>
+      <span class="accent-line"></span>
+      <p>Before and after results from properties we maintain across Connecticut.</p>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <!-- PHOTO SLOT 1 -->
+      <div class="portfolio-item fade-up">
+        <img src="portfolio-1.jpg" alt="Maintained residential landscape with red maple and mulched beds" class="portfolio-img" loading="lazy" />
+        <div class="overlay"></div>
+        <span class="portfolio-corner"><i class="fa-solid fa-camera"></i>Residential Landscape</span>
+      </div>
+
+      <!-- PHOTO SLOT 2 -->
+      <div class="portfolio-item fade-up" style="transition-delay: .1s;">
+        <img src="portfolio-2.jpg" alt="Striped lawn freshly mowed at a Colonial home" class="portfolio-img" loading="lazy" />
+        <div class="overlay"></div>
+        <span class="portfolio-corner"><i class="fa-solid fa-camera"></i>Weekly Lawn Service</span>
+      </div>
+
+      <!-- PHOTO SLOT 3 -->
+      <div class="portfolio-item fade-up" style="transition-delay: .2s;">
+        <img src="portfolio-3.jpg" alt="Tudor-style home with paver walkway and clean lawn" class="portfolio-img" loading="lazy" />
+        <div class="overlay"></div>
+        <span class="portfolio-corner"><i class="fa-solid fa-camera"></i>Full-Property Maintenance</span>
+      </div>
+
+      <!-- PHOTO SLOT 4 -->
+      <div class="portfolio-item fade-up" style="transition-delay: .3s;">
+        <img src="portfolio-4.jpg" alt="Ranch home with mature ornamental tree and freshly mulched flower beds" class="portfolio-img" loading="lazy" />
+        <div class="overlay"></div>
+        <span class="portfolio-corner"><i class="fa-solid fa-camera"></i>Bed Work &amp; Mulching</span>
+      </div>
+
+    </div>
+
+    <div class="portfolio-cta fade-up">
+      <a href="https://instagram.com/eganpropertymaintenance" target="_blank" rel="noopener" class="btn btn-ghost">
+        <i class="fa-brands fa-instagram"></i>
+        Follow Our Work on Instagram &nbsp;@eganpropertymaintenance
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     ABOUT
+     ================================================ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <span class="eyebrow">Meet Ashton</span>
+        <h2>Built From the <em>Ground Up.</em></h2>
+        <span class="accent-line"></span>
+        <p>Ashton Egan picked up his first lawn mower at age 11 — not because someone told him to, but because he saw an opportunity. What started as mowing neighbors' lawns in East Granby grew into something real.</p>
+        <p>Now 18, Ashton runs Egan Property Maintenance full-time, serving residential and commercial clients across Simsbury and the surrounding area. Every property gets his personal attention. No crews of strangers, no cut corners.</p>
+        <p>Just quality work from someone who built this from nothing and takes serious pride in what he puts out.</p>
+
+        <div class="about-trust">
+          <div class="trust-item">
+            <span class="icon-wrap"><i class="fa-solid fa-leaf"></i></span>
+            Locally Owned &amp; Operated
+          </div>
+          <div class="trust-item">
+            <span class="icon-wrap"><i class="fa-solid fa-shield-halved"></i></span>
+            Insured &amp; Professional
+          </div>
+          <div class="trust-item">
+            <span class="icon-wrap"><i class="fa-solid fa-star"></i></span>
+            7+ Years of Hands-On Experience
+          </div>
+        </div>
+      </div>
+
+      <div class="about-photo-wrap fade-up">
+        <!-- ASHTON PHOTO -->
+        <img src="ashton.jpg" alt="Ashton Egan, owner of Egan Property Maintenance" class="about-photo" loading="lazy" />
+        <div class="about-tag">
+          Est. 2018
+          <small>Age 11 to now</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     TESTIMONIALS
+     ================================================ -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head center fade-up">
+      <span class="eyebrow">Client Voices</span>
+      <h2>What Clients Say</h2>
+      <span class="accent-line"></span>
+      <p>Real feedback from real homeowners and business owners across the Farmington Valley.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <article class="testimonial-card fade-up">
+        <span class="quote-mark">"</span>
+        <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+        <blockquote>Ashton has been maintaining our lawn for two seasons now. Never had to follow up, never had to ask twice. He just does the job right.</blockquote>
+        <div class="testimonial-meta">
+          Mike T.
+          <small>Simsbury, CT</small>
+        </div>
+      </article>
+
+      <article class="testimonial-card fade-up" style="transition-delay: .12s;">
+        <span class="quote-mark">"</span>
+        <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+        <blockquote>Our yard looked better after one visit than it did all of last summer. Super professional for his age — honestly impressive.</blockquote>
+        <div class="testimonial-meta">
+          Jennifer R.
+          <small>East Granby, CT</small>
+        </div>
+      </article>
+
+      <article class="testimonial-card fade-up" style="transition-delay: .24s;">
+        <span class="quote-mark">"</span>
+        <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+        <blockquote>We use him for our small commercial lot. Reliable, affordable, and the property always looks clean. Highly recommend.</blockquote>
+        <div class="testimonial-meta">
+          Dan W.
+          <small>Canton, CT</small>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     CONTACT
+     ================================================ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+
+      <form class="contact-form fade-up" action="#" method="post" onsubmit="event.preventDefault(); handleSubmit(this);">
+        <span class="eyebrow">Request a Quote</span>
+        <h2 style="font-size: 38px; color: var(--green-deep); margin: 16px 0 8px;">Get a Free Quote</h2>
+        <p style="color: var(--gray); margin: 0 0 32px; font-size: 15px;">Reach out and Ashton will get back to you within 24 hours.</p>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your full name" required />
+          </div>
+          <div class="form-field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" placeholder="(860) 000-0000" required />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="form-field">
+          <label for="service">Service Needed</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service…</option>
+            <option value="lawn-mowing">Lawn Mowing</option>
+            <option value="clean-up">Spring / Fall Clean-Up</option>
+            <option value="mulching">Mulching &amp; Bed Work</option>
+            <option value="commercial">Commercial Maintenance</option>
+            <option value="other">Other / Not Sure</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="message">Details</label>
+          <textarea id="message" name="message" placeholder="Tell us a little about your property and what you're looking for…"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary form-submit">Send My Request <i class="fa-solid fa-arrow-right"></i></button>
+      </form>
+
+      <aside class="contact-info fade-up">
+        <span class="eyebrow">Get In Touch</span>
+        <h3>Straight line to Ashton.</h3>
+        <p>No call centers, no answering services. You'll be talking to the person who's actually showing up at your property.</p>
+
+        <ul class="info-list">
+          <li>
+            <span class="info-icon"><i class="fa-solid fa-phone"></i></span>
+            <div class="info-text">
+              <div class="label">Call or Text</div>
+              <div class="value"><a href="tel:+18609993161">(860) 999-3161</a></div>
+            </div>
+          </li>
+          <li>
+            <span class="info-icon"><i class="fa-solid fa-location-dot"></i></span>
+            <div class="info-text">
+              <div class="label">Service Area</div>
+              <div class="value">East Granby, CT</div>
+              <small>Serving Simsbury and surrounding areas</small>
+            </div>
+          </li>
+          <li>
+            <span class="info-icon"><i class="fa-brands fa-instagram"></i></span>
+            <div class="info-text">
+              <div class="label">Instagram</div>
+              <div class="value"><a href="https://instagram.com/eganpropertymaintenance" target="_blank" rel="noopener">@eganpropertymaintenance</a></div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="response-note">
+          <strong>Response Time</strong>
+          Typically responds within a few hours.
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     FOOTER
+     ================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">
+          <span class="logo-mark">EGAN</span>
+          <span class="logo-sub">Property Maintenance</span>
+        </div>
+        <p class="footer-tag" style="margin-top: 22px;">Locally owned. Hard working. Built from scratch.</p>
+      </div>
+
+      <div>
+        <h4>Navigate</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#work">Recent Work</a></li>
+          <li><a href="#about">About Ashton</a></li>
+          <li><a href="#contact">Get a Quote</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Connect</h4>
+        <ul class="footer-links">
+          <li><a href="tel:+18609993161"><i class="fa-solid fa-phone" style="color: var(--gold); margin-right: 8px;"></i>(860) 999-3161</a></li>
+          <li><a href="#contact"><i class="fa-solid fa-envelope" style="color: var(--gold); margin-right: 8px;"></i>Send a message</a></li>
+        </ul>
+        <div class="footer-social">
+          <a href="https://instagram.com/eganpropertymaintenance" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="tel:+18609993161" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 Egan Property Maintenance. East Granby, CT.</span>
+      <span>Designed with care in the Farmington Valley.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ================================================
+   NAV: scroll background + mobile hamburger
+   ================================================ */
+const nav        = document.getElementById('nav');
+const hamburger  = document.getElementById('hamburger');
+const navLinks   = document.getElementById('navLinks');
+
+const onScroll = () => {
+  if (window.scrollY > 80) nav.classList.add('scrolled');
+  else                     nav.classList.remove('scrolled');
+};
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+hamburger.addEventListener('click', () => {
+  const open = hamburger.classList.toggle('active');
+  navLinks.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+
+// Close mobile menu when a link is tapped
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (hamburger.classList.contains('active')) {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+/* ================================================
+   FADE-UP on scroll
+   ================================================ */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+/* ================================================
+   FORM submit (no backend — visual confirmation)
+   ================================================ */
+function handleSubmit(form) {
+  const btn = form.querySelector('.form-submit');
+  const original = btn.innerHTML;
+  btn.innerHTML = '<i class="fa-solid fa-check"></i> Request Sent — We\'ll Be In Touch';
+  btn.style.background = 'var(--green)';
+  btn.style.color = 'var(--cream)';
+  form.reset();
+  setTimeout(() => {
+    btn.innerHTML = original;
+    btn.style.background = '';
+    btn.style.color = '';
+  }, 4200);
+}
+</script>
+
+</body>
+</html>
