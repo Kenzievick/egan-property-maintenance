@@ -160,6 +160,17 @@ h1, h2, h3, h4 {
   border: 1px solid transparent;
   white-space: nowrap;
 }
+/* Opt-in escape from the nowrap above, for buttons whose label is too long
+   to fit a phone. Scoped so no other button's layout can shift. */
+.btn-wrap {
+  white-space: normal;
+  flex-wrap: wrap;
+  max-width: 100%;
+  text-align: center;
+  line-height: 1.5;
+}
+.btn-handle { color: var(--gold-soft); }
+.btn-ghost:hover .btn-handle { color: inherit; }
 .btn-primary {
   background: var(--gold);
   color: var(--dark);
@@ -322,28 +333,31 @@ h1, h2, h3, h4 {
 }
 .nav-cta::after { display: none !important; }
 
+/* 44px box for the tap target. The bars keep their 24px width and 6px
+   spacing (insets 6->10, tops 12/18/24 -> 16/22/28), so the icon looks
+   identical — only the hit area grows. */
 .hamburger {
   display: none;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   position: relative;
   z-index: 110;
 }
 .hamburger span {
   display: block;
   position: absolute;
-  left: 6px;
-  right: 6px;
+  left: 10px;
+  right: 10px;
   height: 1.5px;
   background: var(--cream);
   transition: transform .35s var(--ease), opacity .25s var(--ease), top .35s var(--ease);
 }
-.hamburger span:nth-child(1) { top: 12px; }
-.hamburger span:nth-child(2) { top: 18px; }
-.hamburger span:nth-child(3) { top: 24px; }
-.hamburger.active span:nth-child(1) { top: 18px; transform: rotate(45deg); }
+.hamburger span:nth-child(1) { top: 16px; }
+.hamburger span:nth-child(2) { top: 22px; }
+.hamburger span:nth-child(3) { top: 28px; }
+.hamburger.active span:nth-child(1) { top: 22px; transform: rotate(45deg); }
 .hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { top: 18px; transform: rotate(-45deg); }
+.hamburger.active span:nth-child(3) { top: 22px; transform: rotate(-45deg); }
 
 /* ================================================
    HERO
@@ -352,7 +366,10 @@ h1, h2, h3, h4 {
 .hero {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100vh;   /* fallback: Safari < 15.4, Chrome < 108 */
+  /* svh, not dvh: dvh re-sizes the hero as the iOS URL bar retracts, which
+     visibly reflows the headline mid-scroll. */
+  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1134,6 +1151,11 @@ h1, h2, h3, h4 {
   font-weight: 500;
 }
 .info-text .value a:hover { color: var(--gold-soft); }
+/* "@eganpropertymaintenance" is one unbreakable 24-char word with a 257px
+   min-content width. Grid items default to min-width:auto, so on a 320px
+   phone it forced the whole contact column wider than the viewport.
+   `anywhere` (not `break-word`) is required — only it shrinks min-content. */
+.info-text .value { overflow-wrap: anywhere; }
 .info-text .value-alt {
   display: inline-block;
   font-family: 'DM Sans', sans-serif;
@@ -1228,8 +1250,8 @@ h1, h2, h3, h4 {
   margin-top: 4px;
 }
 .footer-social a {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1px solid rgba(201,168,76,.35);
   display: flex;
@@ -1266,8 +1288,14 @@ h1, h2, h3, h4 {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .about-grid { grid-template-columns: 1fr; gap: 60px; }
   .about-photo-wrap::before { display: none; }
-  .testimonials-grid { grid-template-columns: 1fr; gap: 20px; }
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  /* There are exactly three cards — span the odd one out rather than leaving
+     it orphaned at half width on row two. Stays correct if a fourth is added. */
+  .testimonials-grid > .testimonial-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .contact-grid { grid-template-columns: 1fr; gap: 56px; }
+  /* Grid items default to min-width:auto and refuse to shrink below their
+     content. Without this a single long word can widen the whole page. */
+  .contact-grid > * { min-width: 0; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
 }
 
@@ -1276,16 +1304,25 @@ h1, h2, h3, h4 {
     position: fixed;
     top: 0; left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100vh;    /* fallback */
+    height: 100dvh;   /* a fixed overlay should cover exactly what's visible */
     background: var(--green-deep);
     flex-direction: column;
-    justify-content: center;
+    /* flex-start + auto margins, NOT justify-content:center. Centering an
+       overflowing flex column makes its top permanently unreachable — you
+       can't scroll into overflow on the start side. */
+    justify-content: flex-start;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     gap: 32px;
     padding: 80px 32px 32px;
     transform: translateY(-100%);
     transition: transform .5s var(--ease);
     z-index: 105;
   }
+  .nav-links > li:first-child { margin-top: auto; }
+  .nav-links > li:last-child  { margin-bottom: auto; }
   .nav-links.open { transform: translateY(0); }
   .nav-links a { font-size: 18px; }
   .nav-links .nav-cta { font-size: 13px; padding: 14px 28px; }
@@ -1302,17 +1339,36 @@ h1, h2, h3, h4 {
   .footer-bottom { flex-direction: column; text-align: center; }
 
   .hero h1 { font-size: clamp(40px, 12vw, 64px); }
-  .trust-stats { gap: 20px; }
+  .trust-stats { gap: 20px; padding: 16px 22px; }
   .trust-stats .divider { display: none; }
 
   .about-tag { left: -10px; bottom: -22px; padding: 14px 20px; font-size: 15px; }
+
+  .testimonials-grid { grid-template-columns: 1fr; }
+  /* min-height exists to equalise a 3-across row; at one column it's dead space. */
+  .testimonial-card { padding: 34px 26px 30px; min-height: 0; }
+  .testimonial-card .quote-mark { top: 18px; right: 22px; font-size: 54px; }
+
+  /* Nav is position:fixed, so smooth-scrolled anchors land under it.
+     Deliberately small — sections already carry 80px of top padding, so a
+     full nav-height offset would push headings way down the screen. */
+  section[id], header[id] { scroll-margin-top: 24px; }
+
+  /* Touch pointers need the height; desktop (mouse) doesn't, so keep it scoped. */
+  .footer-links { gap: 0; }
+  .footer-links a { display: inline-block; padding: 12px 0; }
 }
 
 @media (max-width: 480px) {
   .hero-cta .btn { width: 100%; }
   .hero-cta { flex-direction: column; align-items: stretch; }
-  .trust-stats { gap: 18px; font-size: 11px; }
+  .trust-stats { gap: 18px; font-size: 11px; padding: 16px 18px; }
   .trust-stats strong { font-size: 18px; }
+
+  /* The handle appears twice more on the page and is one tap away on the
+     profile itself — drop it before the button has to wrap awkwardly. */
+  .btn-wrap .btn-handle { display: none; }
+  .contact-form { padding: 26px 20px; }
 }
 </style>
 </head>
@@ -1480,9 +1536,10 @@ h1, h2, h3, h4 {
     </div>
 
     <div class="portfolio-cta fade-up">
-      <a href="https://instagram.com/eganpropertymaintenance" target="_blank" rel="noopener" class="btn btn-ghost">
+      <a href="https://instagram.com/eganpropertymaintenance" target="_blank" rel="noopener" class="btn btn-ghost btn-wrap">
         <i class="fa-brands fa-instagram"></i>
-        Follow Our Work on Instagram &nbsp;@eganpropertymaintenance
+        <span>Follow Our Work on Instagram</span>
+        <span class="btn-handle">@eganpropertymaintenance</span>
       </a>
     </div>
   </div>
@@ -1725,24 +1782,36 @@ const onScroll = () => {
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-hamburger.addEventListener('click', () => {
-  const open = hamburger.classList.toggle('active');
+// NOTE: 760 is duplicated from the CSS breakpoint below. If one moves, move both.
+const MOBILE_NAV_MQ = window.matchMedia('(max-width: 760px)');
+
+function setMenu(open) {
+  hamburger.classList.toggle('active', open);
   navLinks.classList.toggle('open', open);
   hamburger.setAttribute('aria-expanded', String(open));
   document.body.style.overflow = open ? 'hidden' : '';
-});
+}
+const isMenuOpen = () => navLinks.classList.contains('open');
+const closeMenu  = () => setMenu(false);
+
+hamburger.addEventListener('click', () => setMenu(!isMenuOpen()));
 
 // Close mobile menu when a link is tapped
 navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    if (hamburger.classList.contains('active')) {
-      hamburger.classList.remove('active');
-      navLinks.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-  });
+  link.addEventListener('click', () => { if (isMenuOpen()) closeMenu(); });
 });
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && isMenuOpen()) { closeMenu(); hamburger.focus(); }
+});
+
+/* Rotating past 760px hides the hamburger via CSS, which used to strand
+   body{overflow:hidden} with no control left on screen to undo it —
+   the page became permanently unscrollable. */
+const syncMenuToViewport = (mq) => { if (!mq.matches) closeMenu(); };
+if (MOBILE_NAV_MQ.addEventListener) MOBILE_NAV_MQ.addEventListener('change', syncMenuToViewport);
+else MOBILE_NAV_MQ.addListener(syncMenuToViewport);   // Safari < 14
+syncMenuToViewport(MOBILE_NAV_MQ);
 
 /* ================================================
    FADE-UP on scroll
