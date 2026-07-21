@@ -1831,13 +1831,13 @@ document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
    CONTACT FORM → Web3Forms
    ================================================ */
 
-/* ⬇⬇⬇  PASTE THE WEB3FORMS ACCESS KEY HERE  ⬇⬇⬇
-   Get a free key at https://web3forms.com — enter Ashtonegan12@gmail.com,
-   then copy the key out of the confirmation email they send back.
-   Until this placeholder is replaced, every submission fails and the
-   customer is told to call instead. Nothing is silently lost.          */
-const WEB3FORMS_ACCESS_KEY = 'PASTE-YOUR-ACCESS-KEY-HERE';
-/* ⬆⬆⬆ ---------------------------------------- ⬆⬆⬆ */
+/* Web3Forms access key. Registered to Ashtonegan12@gmail.com — the key is
+   what routes submissions to that inbox, so changing the destination means
+   generating a new key, not editing anything here.
+   This key is public by design (it ships in client-side JS on every page
+   load). Abuse protection is the honeypot below plus the domain allowlist
+   in the Web3Forms dashboard. */
+const WEB3FORMS_ACCESS_KEY = 'a261fc35-a559-4f45-9007-9d441e269da4';
 
 const BUSINESS_PHONE_DISPLAY = '(860) 999-3161';
 const BUSINESS_PHONE_HREF    = 'tel:+18609993161';
